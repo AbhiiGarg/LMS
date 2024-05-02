@@ -1,9 +1,9 @@
+import RouteComponant from "../routes";
 
 
 function App() {
-  return <>
-  <h2>helllo</h2> 
-  </>;
+  return <RouteComponant/> 
+
 }
 
 export default App;

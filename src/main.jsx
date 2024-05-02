@@ -1,7 +1,15 @@
+//Components imports
+import App from "./App.jsx";
+//CSS imports
+import "./index.css";
+//Libary imports
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
     <App />
-)
+    <Toaster/>
+  </BrowserRouter>
+);
