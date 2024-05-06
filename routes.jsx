@@ -1,10 +1,14 @@
-import { Routes } from "react-router-dom";
+import { Routes,Route } from "react-router-dom";
+import HomePage from "./src/pages/HomePage";
 
-
-function RouteComponant(){
-    return <Routes>
-        {/* <Route path="/" element={<ComponentName/>}/> */}
-    </Routes>
+function RouteComponant() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+      </Routes>
+    </>
+  );
 }
 
-export default RouteComponant
+export default RouteComponant;
