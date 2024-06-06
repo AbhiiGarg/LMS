@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FooterComponent from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { logout } from "../redux/slices/AuthSlice";
 
 function HomeLayout({ children }) {
   const changeWidth = () => {
@@ -29,8 +30,12 @@ function HomeLayout({ children }) {
 
   //   console.log(role + "  " + isLoggedIn);
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
+    console.log("logout");
+    const res=await dispatch(logout())
+    if(res?.payload?.sucess)
+      useNavigate("/")
   };
 
   return (

@@ -17,21 +17,21 @@ function HomePage() {
             We have large library of courses taught by highly skilled and
             qualified faculties at a vary affordable cost
           </p>
-          <div className="space-x-6">
+          <div className="sm:space-x-6 flex sm:flex-row flex-col sm:justify-start items-center">
             <Link to="/courses">
               <button className="bg-yellow-500 px-5 py-3 rounded-md font-semibold sm:text-lg text-sm cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300">
                 Explore Courses
               </button>
             </Link>
             <Link to="/contact">
-              <button className="border border-yellow-500 px-5 py-3 rounded-md font-semibold sm:text-lg text-sm cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300 mt-3">
+              <button className="border border-yellow-500 px-5 py-3 rounded-md font-semibold sm:text-lg text-sm cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300 sm:mt-0 sm:mb-0 mt-3 mb-5 ">
                 Contact Us
               </button>
             </Link>
           </div>
         </div>
         <div className="sm:w-1/2 flex items-center justify-center">
-            <img alt="homepage image" src={homePageImage} className="sm:w-fit w-1/2"/>
+            <img alt="homepage image" src={homePageImage} className="w-fit"/>
         </div>
       </div>
     </HomeLayout>
