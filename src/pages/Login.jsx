@@ -60,8 +60,10 @@ import axios from "axios";
     const response = await dispatch(loginAccount(formDate))
 
     console.log(response);
-    if(response?.payload?.sucess)
-    navigate("/")
+    if(response?.payload?.sucess){
+      console.log(response.payload);
+      navigate("/")
+    }
 
   };
 
