@@ -6,17 +6,17 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { createAccount, loginAccount } from "../redux/slices/AuthSlice";
 import axios from "axios";
+import { isEmail, isPassword } from "../helpers/regexMatcher";
 
- function Login() {
+function Login() {
   const dispatch = useDispatch();
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
-  
   const [loginData, setLoginData] = useState({
-      email: "",
-      password: "",
-    });
-    
+    email: "",
+    password: "",
+  });
+
   const handelUserInput = (e) => {
     const { name, value } = e.target;
     setLoginData({
@@ -25,24 +25,19 @@ import axios from "axios";
     });
   };
 
-  
   const loginInAccount = async (event) => {
     event.preventDefault();
-    if ( !loginData.email || !loginData.password) {
+    if (!loginData.email || !loginData.password) {
       toast.error("Please fill all the details");
       return;
     }
 
-    if (!loginData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    if (!isEmail(loginData.email)) {
       toast.error("Invalid email id");
       return;
     }
 
-    if (
-      !loginData.password.match(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-      )
-    ) {
+    if (!isPassword(loginData.password)) {
       toast.error(
         "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character"
       );
@@ -51,20 +46,19 @@ import axios from "axios";
 
     console.log(loginData);
 
-    const formDate =new FormData()
-    formDate.append("email",loginData.email)
-    formDate.append("password",loginData.password)
+    const formDate = new FormData();
+    formDate.append("email", loginData.email);
+    formDate.append("password", loginData.password);
     console.log(formDate);
 
     //dispatch create account action
-    const response = await dispatch(loginAccount(formDate))
+    const response = await dispatch(loginAccount(formDate));
 
     console.log(response);
-    if(response?.payload?.sucess){
+    if (response?.payload?.sucess) {
       console.log(response.payload);
-      navigate("/")
+      navigate("/");
     }
-
   };
 
   return (
@@ -107,9 +101,9 @@ import axios from "axios";
             Login
           </button>
           <p className="text-center">
-           Do not have an account ?{" "}
+            Do not have an account ?{" "}
             <Link to="/signup" className="link text-accent">
-            Signup
+              Signup
             </Link>
           </p>
         </form>
